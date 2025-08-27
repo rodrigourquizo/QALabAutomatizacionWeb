@@ -6,12 +6,15 @@ Característica: Login
   Para ver todos los items
 
   @test
-  Escenario: Iniciar sesión
+  Esquema del escenario: Iniciar sesión
     Dado que me encuentro en la página de login de Saucedemo
-    Cuando inicio sesión con las credenciales usuario: "standard_user" y contraseña: "secret_sauce"
-    Entonces valido que debería aparecer el título de "Products"
+    Cuando inicio sesión con las credenciales usuario: "<usuario>" y contraseña: "<contraseña>"
+    Entonces valido que debería aparecer el título de "<titulo>"
     Y también valido que al menos exista un item
 
     Ejemplos:
-        | usuario        | contraseña    | titulo    |
-        | standard_user  | secret_sauce  | Products  |
+        | usuario        | contraseña    | titulo   |
+        | standard_user  | secret_sauce  | Products |
+        | problem_user   | secret_sauce  | Products |
+        | performance_glitch_user | secret_sauce | Products |
+
