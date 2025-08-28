@@ -1,2 +1,3 @@
-# QAInnovationLab
-Automation Team / For education purpose
+# QALab Web Automation
+Pruebas de Automatizacion del QALab
+main -> Evaluación de Automatización Web
