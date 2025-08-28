@@ -1,12 +1,14 @@
 package com.nttdata.steps;
 
 import com.nttdata.page.MyStorePage;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.Keys;
 import java.time.Duration;
+import java.util.List;
 
 public class LoginSteps {
 
@@ -39,6 +41,7 @@ public class LoginSteps {
         this.driver.findElement(MyStorePage.passInput).sendKeys(password);
     }
 
+
     /**
      * Hacer click en el botón iniciar sesion
      */
@@ -50,4 +53,51 @@ public class LoginSteps {
         this.driver.findElement(MyStorePage.loginButton).click();
     }
 
+
+
+    public void go_categoria_subcategoria(String categoria, String subcategoria){
+
+        Assertions.assertEquals("Clothes",categoria );
+        Assertions.assertEquals("Men", subcategoria);
+        this.driver.findElement(MyStorePage.categoryButton).click();
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(MyStorePage.subcategoryButton));
+        this.driver.findElement(MyStorePage.subcategoryButton).click();
+
+    }
+
+    public void click_product(){
+        this.driver.findElement(MyStorePage.fisrtproduct).click();
+    }
+
+    public void llenar_numero_items(){
+        this.driver.findElement(MyStorePage.numberInput).sendKeys(Keys.END, Keys.BACK_SPACE, "2");
+    }
+
+    public void añadir_carrito(){
+        this.driver.findElement(MyStorePage.addtocart).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(MyStorePage.purchaseconfirmation));
+    }
+
+    public String get_confirmacion_producto(){
+        return this.driver.findElement(MyStorePage.purchaseconfirmation).getText();
+
+    }
+
+    public String get_monto() {
+        return this.driver.findElement(MyStorePage.monto).getText();
+    }
+
+    public void finalizarcompra() {
+        this.driver.findElement(MyStorePage.endpurchase).click();
+    }
+
+    public String get_pagina_carrito_titulo() {
+        return this.driver.findElement(MyStorePage.cart_title).getText();
+    }
+
+    public String get_monto_final() {
+        return this.driver.findElement(MyStorePage.monto_final).getText();
+    }
 }
